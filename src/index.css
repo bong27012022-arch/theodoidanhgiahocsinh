@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  
+  --color-primary: #6366f1; /* Indigo */
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #ec4899; /* Pink */
+  --color-accent: #f59e0b; /* Amber */
+  --color-glass: rgba(255, 255, 255, 0.7);
+  --color-glass-dark: rgba(15, 23, 42, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-primary/20;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-slate-200/50;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  @apply border-white/60 shadow-2xl shadow-primary/5;
+}
+
+.glass-panel {
+  @apply bg-white/40 backdrop-blur-md border border-white/20;
+}
+
+.gradient-text {
+  @apply bg-linear-to-br from-primary via-primary-dark to-secondary bg-clip-text text-transparent;
+}
+
+.btn-primary {
+  @apply bg-linear-to-r from-primary to-primary-dark text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+}
+
+.btn-glass {
+  @apply bg-white/50 backdrop-blur-sm border border-white/20 text-slate-700 hover:bg-white/80 transition-all;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+}
+
+/* Markdown Styles */
+.markdown-body {
+  @apply text-slate-700 leading-relaxed;
+}
+
+.markdown-body h1 { @apply text-3xl font-extrabold mb-6 mt-8 text-slate-900 border-b border-slate-100 pb-2; }
+.markdown-body h2 { @apply text-2xl font-bold mb-4 mt-8 text-slate-800 flex items-center gap-2; }
+.markdown-body h3 { @apply text-xl font-bold mb-3 mt-6 text-slate-800; }
+.markdown-body p { @apply mb-4 leading-relaxed; }
+.markdown-body ul { @apply space-y-2 mb-6 ml-4 list-none; }
+.markdown-body li { @apply relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-2 before:h-2 before:bg-primary/40 before:rounded-full; }
+.markdown-body blockquote { 
+  @apply border-l-4 border-primary pl-6 py-4 my-6 bg-primary/5 rounded-r-2xl italic text-primary-dark;
+}
+.markdown-body code {
+  @apply px-1.5 py-0.5 bg-slate-100 rounded text-pink-600 font-mono text-sm;
+}
